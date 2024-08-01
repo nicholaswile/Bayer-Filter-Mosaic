@@ -34,15 +34,15 @@ def get_channels(img):
     blue_channel [:,:,0] = img[:,:,0]
     return red_channel, green_channel, blue_channel
 
-# For averaging blue and or red pixels, from a red or blue pixel
+# For averaging blue or red pixels, from a red or blue pixel (perpendicular, north south east west)
 def neighbor4_perp(img, x, y, channel):
     return (img[y-1][x][channel]+img[y+1][x][channel]+img[y][x-1][channel]+img[y][x+1][channel])/4
 
-# For averaging green pixels, from a red or blue pixel
+# For averaging green pixels, from a red or blue pixel (diagonal, north-east/west, south-east/west)
 def neighbor4_diag(img, x, y, channel):
     return (img[y-1][x-1][channel]+img[y+1][x+1][channel]+img[y-1][x+1][channel]+img[y+1][x-1][channel])/4
 
-# For averaging 2 vertical neighboring pixels, from a green pixel
+# For averaging 2 vertical neighboring pixels, from a green pixel 
 def neighbor2_vert(img, x, y, channel):
     return (img[y-1][x][channel]+img[y+1][x][channel])/2
 
@@ -64,10 +64,10 @@ def demosaic(img):
                 demosaic_img[y][x][2] = neighbor4_diag(img, x, y, 2)
             elif mosaic[y][x] == 1: # At green pixel. Need blue and red pixels.
                 demosaic_img[y][x][1] = img[y][x][1]
-                if y % 2 == 0:
+                if y % 2 == 0: # this is a G B row, so blue is horizontal and red is vertical
                     demosaic_img[y][x][0] = neighbor2_horz(img, x, y, 0)
                     demosaic_img[y][x][2] = neighbor2_vert(img, x, y, 2)
-                else:
+                else: # this is a R G row, so blue is vert and red is horz
                     demosaic_img[y][x][0] = neighbor2_vert(img, x, y, 0)
                     demosaic_img[y][x][2] = neighbor2_horz(img, x, y, 2)
             elif mosaic[y][x] == 2: # At red pixel. Need blue and green pixels.
