@@ -3,17 +3,19 @@ An implementation of a Bayer filter mosaic simulation. A Bayer filter mosaic is 
 
 This project simulates how digital cameras "see" the world and take images. Specifically, my project outputs images that look to be acquired from the Bayer filter mosaic. It first takes a scan and creates a greyscale image of interleaved RGB channels, simulating the raw output of a digital camera. Then it reconstructs an RGB image by interpolating missing channel values from neighboring pixels. I used bilinear interpolation as the demosaicing method. This simple method created some artefacts along the edges in the reconstructed image, but the result is visually acceptable.
 
+**You can click the image to view individually and with the correct aspect ratio.**
+
 | 1. Original scan | 2. Bayer filter | 3. Color-coded Bayer |
 |------------------|-----------------|----------------------|
-|<img src="images/original.png" height=500>| <img src="images/greyscale.png" height=500> | <img src="images/color-coded.png" height=500>|
+|<img src="images/original.png">| <img src="images/greyscale.png"> | <img src="images/color-coded.png">|
 
 | 3. (a) Red channel      | 3. (b) Blue channel          | 3. (c) Green channel   |
 |------------------|-----------------------|-----------------|
-|<img src="images/red.png" height=500>| <img src="images/blue.png" height=500> | <img src="images/green.png" height=500>|
+|<img src="images/red.png">| <img src="images/blue.png"> | <img src="images/green.png">|
 
 | 4. Reconstructed image (demosaicing with bilinear interpolation) | 
 |------------------------------------------------------------------|
-|<img src="images/demosaic_img.png" height=500>                    |
+|<img src="images/demosaic_img.png" height="500">                    |
 
 ## Motivation
 I used this project as an opportunity to learn more about image processing and computer graphics. In particular, I was curious how photosensors function in digital cameras to create images. 
