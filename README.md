@@ -15,7 +15,7 @@ This project simulates how digital cameras "see" the world and take images. Spec
 
 | 4. Reconstructed image (demosaicing with bilinear interpolation) | 
 |------------------------------------------------------------------|
-|<img src="images/demosaic_img.png" height="500">                    |
+|<img src="images/demosaic_img.png">                    |
 
 ## Motivation
 I used this project as an opportunity to learn more about image processing and computer graphics. In particular, I was curious how photosensors function in digital cameras to create images. 
