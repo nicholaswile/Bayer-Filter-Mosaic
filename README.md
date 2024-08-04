@@ -1,7 +1,7 @@
 # Bayer-Filter-Mosaic
 An implementation of a Bayer filter mosaic simulation. A Bayer filter mosaic is a color filter array used in digital image sensors for digital cameras to create color images. Built with Python, utilizing OpenCV 4.10.0.84 only for reading and writing image files. 
 
-This project simulates how digital cameras "see" the world and take images. Specifically, my project outputs images that look to be acquired from the Bayer filter mosaic. It first takes a scan and creates a greyscale image of interleaved RGB channels, simulating the raw output of a digital camera. Then it reconstructs an RGB image by interpolating missing channel values from neighboring pixels. I used bilinear interpolation as the demosaicing method. This simple method created some artefacts along the edges in the reconstructed image, but the result is visually acceptable.
+This project simulates how digital cameras "see" the world and take images. Specifically, my project outputs images that look to be acquired from the Bayer filter mosaic. It first takes a scan and creates a greyscale image of interleaved RGB channels, simulating the raw output of a digital camera. Then it reconstructs an RGB image by interpolating missing channel values from neighboring pixels. I used bilinear interpolation as the demosaicing method. This simple method created some artifacts along the edges in the reconstructed image, but the result is visually acceptable.
 
 **You can click the image to view individually and with the correct aspect ratio.**
 
@@ -30,3 +30,6 @@ An output of a simulated sensor with the same dimensions as the input scene with
 
 ### Image reconstruction
 Finally, the image is reconstructed using bilinear interpolation for demosaicing, averaging with the 2 nearest neighbors of the green pixels (for finding average red and blue values) and the 4 nearest neighbors of the red and blue pixels.
+
+## Future works
+I used bilinear interpolation to demosaic the image. While this approach reconstructs the RGB image well in uniform regions, it leaves artifacts on edges. I would like to experiment with more sophisticated methods for image reconstruction.
